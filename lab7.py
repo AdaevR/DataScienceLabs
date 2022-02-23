@@ -2,12 +2,21 @@ import math
 import matplotlib.pyplot as plt
 import json
 
+from sympy import true
+
 
 def main():
     data = LoadData('data/data2_1.json')
-    rxy = LinearCorrelationCoeff(data)
 
-    print(rxy)
+    isLinear = true
+    if(isLinear):
+        rxy = LinearCorrelationCoeff(data)
+        print("Значение коэффициента корреляции: " + str(rxy))
+    else:
+        rs = RangCorrelationCoeff(data)
+        print("Значение коэффициента корреляции: " + str(rs[0]))
+        print("Значение t_кр: " + str(rs[1]))
+
     ShowCorrelationPlot(data)
 
 
